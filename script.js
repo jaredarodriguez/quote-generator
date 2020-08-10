@@ -28,10 +28,22 @@ async function getQuote() {
         quoteText.innerText = data.quoteText; 
     } catch (error) {
         console.log(error);
-        // getQuote(); 
- 
+        getQuote(); 
     }
 }
+
+// Tweet Quote
+function tweetQuote() {
+    const quote = quoteText.innerText;
+    const author = authorText.innerText; 
+    const twitterURL = `https://twitter.com/intent/tweet?text=${quote} ~ ${author}`;
+    window.open(twitterURL, '_blank')
+}
+
+// Event Listeners
+newQuoteBtn.addEventListener('click', getQuote);
+twitterBtn.addEventListener('click', tweetQuote); 
+
 
 // On Load 
 getQuote(); 
